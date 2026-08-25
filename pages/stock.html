@@ -1,0 +1,368 @@
+<section class="app-page laptop-stock-page">
+
+  <div class="page-heading">
+
+    <div>
+      <p class="dashboard-kicker">
+        LAPTOP INVENTORY
+      </p>
+
+      <h1>Laptop Stock</h1>
+
+      <p>
+        Track every laptop individually from arrival to sale.
+      </p>
+    </div>
+
+    <div class="stock-heading-actions">
+
+      <button
+        class="customer-view-launch-btn"
+        id="openCustomerViewButton"
+        type="button"
+      >
+        Customer View
+      </button>
+
+      <button
+        class="add-product-btn"
+        id="receiveLaptopButton"
+        type="button"
+      >
+        ＋ Receive Laptop
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="product-summary">
+
+    <article class="product-summary-card">
+      <div class="summary-icon summary-purple">◇</div>
+      <div>
+        <span>Total Stock</span>
+        <strong id="stockTotalCount">0</strong>
+      </div>
+    </article>
+
+    <article class="product-summary-card">
+      <div class="summary-icon summary-green">✓</div>
+      <div>
+        <span>Ready for Sale</span>
+        <strong id="readyForSaleCount">0</strong>
+      </div>
+    </article>
+
+    <article class="product-summary-card">
+      <div class="summary-icon summary-orange">↻</div>
+      <div>
+        <span>Returned</span>
+        <strong id="returnedStockCount">0</strong>
+      </div>
+    </article>
+
+    <article class="product-summary-card">
+      <div class="summary-icon summary-red">!</div>
+      <div>
+        <span>In Service</span>
+        <strong id="serviceStockCount">0</strong>
+      </div>
+    </article>
+
+  </div>
+
+
+  <section class="products-panel">
+
+    <div class="products-toolbar">
+
+      <div class="product-search">
+        <span>⌕</span>
+
+        <input
+          id="laptopStockSearch"
+          type="search"
+          placeholder="Search serial, BABU code, brand or model..."
+        >
+      </div>
+
+      <select
+        class="product-filter"
+        id="stockBrandFilter"
+      >
+        <option value="all">All Brands</option>
+        <option value="HP">HP</option>
+        <option value="Dell">Dell</option>
+        <option value="Lenovo">Lenovo</option>
+        <option value="Microsoft Surface">Microsoft Surface</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <select
+        class="product-filter"
+        id="laptopStatusFilter"
+      >
+        <option value="all">All Status</option>
+        <option value="in-stock">In Stock</option>
+        <option value="returned">Returned</option>
+        <option value="service">In Service</option>
+        <option value="sold">Sold</option>
+        <option value="missing">Missing</option>
+      </select>
+
+    </div>
+
+
+    <div class="product-table-wrap">
+
+      <table class="product-table laptop-stock-table">
+
+        <thead>
+          <tr>
+            <th>Laptop</th>
+            <th>Code</th>
+            <th>Serial</th>
+            <th>Configuration</th>
+            <th>Battery</th>
+            <th>Charger</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody id="laptopStockTableBody">
+
+          <tr class="empty-product-row">
+            <td colspan="9">
+
+              <div class="products-empty-state">
+
+                <div class="products-empty-icon">◇</div>
+
+                <h3>No laptops in stock yet</h3>
+
+                <p>
+                  Receive your first laptop to start tracking stock.
+                </p>
+
+                <button
+                  class="empty-add-btn"
+                  id="emptyReceiveLaptopButton"
+                  type="button"
+                >
+                  ＋ Receive First Laptop
+                </button>
+
+              </div>
+
+            </td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+
+  <!-- RECEIVE MODAL -->
+
+  <div
+    class="product-modal hidden"
+    id="receiveLaptopModal"
+  >
+
+    <div
+      class="product-modal-backdrop"
+      id="receiveLaptopBackdrop"
+    ></div>
+
+
+    <div class="product-modal-card bulk-receive-modal">
+
+      <div class="product-modal-header">
+
+        <div>
+          <p class="dashboard-kicker">STOCK ENTRY</p>
+          <h2>Receive Laptops</h2>
+
+          <p>
+            Enter delivery information once, then add the laptops.
+          </p>
+        </div>
+
+        <button
+          class="modal-close-btn"
+          id="closeReceiveLaptopModal"
+          type="button"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <form
+        class="product-form"
+        id="receiveLaptopForm"
+      >
+
+        <section class="product-form-section">
+
+          <div class="form-section-heading">
+            <div class="form-section-icon delivery-icon">↓</div>
+
+            <div>
+              <h3>Delivery Information</h3>
+              <p>This applies to every laptop below.</p>
+            </div>
+          </div>
+
+
+          <div class="product-form-grid">
+
+            <div class="product-field">
+              <label>
+                Delivered By <span>*</span>
+              </label>
+
+              <input
+                id="deliveredBy"
+                type="text"
+                placeholder="Enter delivery person's name"
+                required
+              >
+            </div>
+
+
+            <div class="product-field">
+              <label>Phone Number</label>
+
+              <input
+                id="deliveryPhone"
+                type="tel"
+                placeholder="01XXXXXXXXX"
+              >
+            </div>
+
+
+            <div class="product-field">
+              <label>
+                Received Date <span>*</span>
+              </label>
+
+              <input
+                id="receivedDate"
+                type="date"
+                required
+              >
+            </div>
+
+
+            <div class="product-field">
+              <label>
+                Carrying By <span>*</span>
+              </label>
+
+              <input
+                id="carryingBy"
+                type="text"
+                placeholder="Enter carrying person's name"
+                required
+              >
+            </div>
+
+
+            <div class="product-field field-wide">
+              <label>Details / Note</label>
+
+              <textarea
+                id="deliveryDetails"
+                class="product-textarea"
+                placeholder="Optional internal details..."
+              ></textarea>
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <div class="bulk-receive-summary">
+
+          <div>
+            <span>LAPTOPS IN THIS DELIVERY</span>
+            <strong id="bulkLaptopCount">1 Laptop</strong>
+          </div>
+
+          <p>
+            Delivery information only needs to be entered once.
+          </p>
+
+        </div>
+
+
+        <div id="bulkLaptopEntries"></div>
+
+
+        <button
+          class="add-another-laptop-btn"
+          id="addAnotherLaptopButton"
+          type="button"
+        >
+          <span>＋</span>
+
+          <div>
+            <strong>Add Another Laptop</strong>
+            <small>Use the same delivery information.</small>
+          </div>
+        </button>
+
+
+        <p
+          class="product-form-message"
+          id="receiveLaptopMessage"
+        ></p>
+
+
+        <div class="product-modal-footer bulk-receive-footer">
+
+          <button
+            class="modal-cancel-btn"
+            id="cancelReceiveLaptop"
+            type="button"
+          >
+            Cancel
+          </button>
+
+          <button
+            class="save-product-btn"
+            type="submit"
+          >
+            <span id="receiveLaptopSubmitText">
+              Receive 1 Laptop
+            </span>
+
+            <span>→</span>
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <div
+    class="customer-view-screen hidden"
+    id="customerViewScreen"
+  ></div>
+
+</section>

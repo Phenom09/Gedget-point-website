@@ -1,0 +1,788 @@
+<section class="app-page products-page">
+
+  <!-- =========================================
+       PAGE HEADING
+       ========================================= -->
+
+  <div class="page-heading">
+
+    <div>
+      <p class="dashboard-kicker">
+        INVENTORY MANAGEMENT
+      </p>
+
+      <h1>
+        Products
+      </h1>
+
+      <p>
+        Manage all products in your business from one place.
+      </p>
+    </div>
+
+
+    <button
+      class="add-product-btn"
+      type="button"
+      id="addProductButton"
+    >
+      <span>＋</span>
+      Add Product
+    </button>
+
+  </div>
+
+
+  <!-- =========================================
+       PRODUCT SUMMARY
+       ========================================= -->
+
+  <div class="product-summary">
+
+    <article class="product-summary-card">
+
+      <div class="summary-icon summary-purple">
+        ◇
+      </div>
+
+      <div>
+        <span>Total Products</span>
+
+        <strong id="totalProductsCount">
+          0
+        </strong>
+      </div>
+
+    </article>
+
+
+    <article class="product-summary-card">
+
+      <div class="summary-icon summary-green">
+        ▣
+      </div>
+
+      <div>
+        <span>In Stock</span>
+
+        <strong id="inStockCount">
+          0
+        </strong>
+      </div>
+
+    </article>
+
+
+    <article class="product-summary-card">
+
+      <div class="summary-icon summary-orange">
+        !
+      </div>
+
+      <div>
+        <span>Low Stock</span>
+
+        <strong id="lowStockCount">
+          0
+        </strong>
+      </div>
+
+    </article>
+
+
+    <article class="product-summary-card">
+
+      <div class="summary-icon summary-red">
+        ×
+      </div>
+
+      <div>
+        <span>Out of Stock</span>
+
+        <strong id="outOfStockCount">
+          0
+        </strong>
+      </div>
+
+    </article>
+
+  </div>
+
+
+  <!-- =========================================
+       PRODUCTS PANEL
+       ========================================= -->
+
+  <section class="products-panel">
+
+    <div class="products-toolbar">
+
+      <div class="product-search">
+
+        <span>⌕</span>
+
+        <input
+          id="productSearchInput"
+          type="search"
+          placeholder="Search product, SKU or serial number..."
+        >
+
+      </div>
+
+
+      <select
+        class="product-filter"
+        id="categoryFilter"
+      >
+        <option value="all">
+          All Categories
+        </option>
+
+        <option value="Smartphone">
+          Smartphone
+        </option>
+
+        <option value="Laptop">
+          Laptop
+        </option>
+
+        <option value="Tablet">
+          Tablet
+        </option>
+
+        <option value="Accessories">
+          Accessories
+        </option>
+
+        <option value="Charger">
+          Charger
+        </option>
+
+        <option value="Cable">
+          Cable
+        </option>
+
+        <option value="Earphone">
+          Earphone
+        </option>
+
+        <option value="Smartwatch">
+          Smartwatch
+        </option>
+
+        <option value="Other">
+          Other
+        </option>
+      </select>
+
+
+      <select
+        class="product-filter"
+        id="stockFilter"
+      >
+        <option value="all">
+          All Stock
+        </option>
+
+        <option value="in-stock">
+          In Stock
+        </option>
+
+        <option value="low-stock">
+          Low Stock
+        </option>
+
+        <option value="out-of-stock">
+          Out of Stock
+        </option>
+      </select>
+
+    </div>
+
+
+    <!-- PRODUCT TABLE -->
+
+    <div class="product-table-wrap">
+
+      <table class="product-table">
+
+        <thead>
+
+          <tr>
+            <th>Product</th>
+            <th>SKU</th>
+            <th>Category</th>
+            <th>Purchase Price</th>
+            <th>Selling Price</th>
+            <th>Stock</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+
+        </thead>
+
+
+        <tbody id="productTableBody">
+
+          <tr
+            class="empty-product-row"
+            id="emptyProductRow"
+          >
+
+            <td colspan="8">
+
+              <div class="products-empty-state">
+
+                <div class="products-empty-icon">
+                  ◇
+                </div>
+
+                <h3>
+                  No products yet
+                </h3>
+
+                <p>
+                  Add your first product to start managing your inventory.
+                </p>
+
+                <button
+                  type="button"
+                  class="empty-add-btn"
+                  id="emptyAddProductButton"
+                >
+                  ＋ Add First Product
+                </button>
+
+              </div>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================
+       ADD PRODUCT MODAL
+       ========================================= -->
+
+  <div
+    class="product-modal hidden"
+    id="productModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="productModalTitle"
+  >
+
+    <div
+      class="product-modal-backdrop"
+      id="productModalBackdrop"
+    ></div>
+
+
+    <div class="product-modal-card">
+
+      <!-- MODAL HEADER -->
+
+      <div class="product-modal-header">
+
+        <div>
+
+          <p class="dashboard-kicker">
+            NEW INVENTORY ITEM
+          </p>
+
+          <h2 id="productModalTitle">
+            Add Product
+          </h2>
+
+          <p>
+            Add product, pricing and stock information.
+          </p>
+
+        </div>
+
+
+        <button
+          class="modal-close-btn"
+          id="closeProductModal"
+          type="button"
+          aria-label="Close add product form"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <!-- PRODUCT FORM -->
+
+      <form
+        class="product-form"
+        id="productForm"
+      >
+
+
+        <!-- BASIC INFORMATION -->
+
+        <section class="product-form-section">
+
+          <div class="form-section-heading">
+
+            <div class="form-section-icon">
+              ◇
+            </div>
+
+            <div>
+
+              <h3>
+                Product Information
+              </h3>
+
+              <p>
+                Basic information about the product.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="product-form-grid">
+
+            <div class="product-field field-wide">
+
+              <label for="productName">
+                Product Name
+                <span>*</span>
+              </label>
+
+              <input
+                id="productName"
+                type="text"
+                placeholder="Example: iPhone 16 Pro"
+                required
+              >
+
+            </div>
+
+
+            <div class="product-field">
+
+              <label for="productCategory">
+                Category
+                <span>*</span>
+              </label>
+
+              <select
+                id="productCategory"
+                required
+              >
+
+                <option value="">
+                  Select category
+                </option>
+
+                <option>Smartphone</option>
+                <option>Laptop</option>
+                <option>Tablet</option>
+                <option>Accessories</option>
+                <option>Charger</option>
+                <option>Cable</option>
+                <option>Earphone</option>
+                <option>Smartwatch</option>
+                <option>Other</option>
+
+              </select>
+
+            </div>
+
+
+            <div class="product-field">
+
+              <label for="productBrand">
+                Brand
+              </label>
+
+              <input
+                id="productBrand"
+                type="text"
+                placeholder="Example: Apple"
+              >
+
+            </div>
+
+
+            <div class="product-field">
+
+              <label for="productModel">
+                Model
+              </label>
+
+              <input
+                id="productModel"
+                type="text"
+                placeholder="Example: A3294"
+              >
+
+            </div>
+
+
+            <div class="product-field">
+
+              <label for="productSku">
+                SKU
+                <span>*</span>
+              </label>
+
+              <input
+                id="productSku"
+                type="text"
+                placeholder="Example: IP16P-256-BLK"
+                required
+              >
+
+            </div>
+
+
+            <div class="product-field field-wide">
+
+              <label for="productSerial">
+                Serial Number
+              </label>
+
+              <input
+                id="productSerial"
+                type="text"
+                placeholder="Serial / IMEI / unique identifier"
+              >
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- PRICING -->
+
+        <section class="product-form-section">
+
+          <div class="form-section-heading">
+
+            <div class="form-section-icon price-icon">
+              ৳
+            </div>
+
+            <div>
+
+              <h3>
+                Pricing
+              </h3>
+
+              <p>
+                Purchase and selling price.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="product-form-grid">
+
+            <div class="product-field">
+
+              <label for="purchasePrice">
+                Purchase Price
+                <span>*</span>
+              </label>
+
+              <div class="money-input">
+
+                <span>
+                  ৳
+                </span>
+
+                <input
+                  id="purchasePrice"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  placeholder="0"
+                  required
+                >
+
+              </div>
+
+            </div>
+
+
+            <div class="product-field">
+
+              <label for="sellingPrice">
+                Selling Price
+                <span>*</span>
+              </label>
+
+              <div class="money-input">
+
+                <span>
+                  ৳
+                </span>
+
+                <input
+                  id="sellingPrice"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  placeholder="0"
+                  required
+                >
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div
+            class="profit-preview"
+            id="profitPreview"
+          >
+
+            <div>
+
+              <span>
+                Estimated Profit
+              </span>
+
+              <strong id="estimatedProfit">
+                ৳0
+              </strong>
+
+            </div>
+
+            <small>
+              Per unit before other expenses
+            </small>
+
+          </div>
+
+        </section>
+
+
+        <!-- STOCK -->
+
+        <section class="product-form-section">
+
+          <div class="form-section-heading">
+
+            <div class="form-section-icon stock-icon">
+              ▣
+            </div>
+
+            <div>
+
+              <h3>
+                Stock & Purchase
+              </h3>
+
+              <p>
+                Quantity and purchasing information.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="product-form-grid">
+
+            <div class="product-field">
+
+              <label for="stockQuantity">
+                Stock Quantity
+                <span>*</span>
+              </label>
+
+              <input
+                id="stockQuantity"
+                type="number"
+                min="0"
+                step="1"
+                placeholder="0"
+                required
+              >
+
+            </div>
+
+
+            <div class="product-field">
+
+              <label for="lowStockLimit">
+                Low Stock Limit
+              </label>
+
+              <input
+                id="lowStockLimit"
+                type="number"
+                min="0"
+                step="1"
+                value="3"
+              >
+
+            </div>
+
+
+            <div class="product-field">
+
+              <label for="productSupplier">
+                Supplier
+              </label>
+
+              <input
+                id="productSupplier"
+                type="text"
+                placeholder="Supplier name"
+              >
+
+            </div>
+
+
+            <div class="product-field">
+
+              <label for="purchaseDate">
+                Purchase Date
+              </label>
+
+              <input
+                id="purchaseDate"
+                type="date"
+              >
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- WARRANTY -->
+
+        <section class="product-form-section">
+
+          <div class="form-section-heading">
+
+            <div class="form-section-icon warranty-icon">
+              ♢
+            </div>
+
+            <div>
+
+              <h3>
+                Warranty & Status
+              </h3>
+
+              <p>
+                Optional warranty and product status.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="product-form-grid">
+
+            <div class="product-field">
+
+              <label for="warrantyInfo">
+                Warranty
+              </label>
+
+              <input
+                id="warrantyInfo"
+                type="text"
+                placeholder="Example: 12 Months"
+              >
+
+            </div>
+
+
+            <div class="product-field">
+
+              <label for="productStatus">
+                Product Status
+              </label>
+
+              <select id="productStatus">
+
+                <option value="Active">
+                  Active
+                </option>
+
+                <option value="Inactive">
+                  Inactive
+                </option>
+
+              </select>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- FORM MESSAGE -->
+
+        <p
+          class="product-form-message"
+          id="productFormMessage"
+          role="status"
+        ></p>
+
+
+        <!-- MODAL FOOTER -->
+
+        <div class="product-modal-footer">
+
+          <button
+            class="modal-cancel-btn"
+            id="cancelProductButton"
+            type="button"
+          >
+            Cancel
+          </button>
+
+
+          <button
+            class="save-product-btn"
+            type="submit"
+          >
+            <span>
+              Save Product
+            </span>
+
+            <span>
+              →
+            </span>
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</section>

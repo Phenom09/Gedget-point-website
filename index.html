@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Laddu Hub - Your Smart Business Companion"
+  >
+
+  <title>Laddu Hub</title>
+
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
+</head>
+
+<body>
+
+  <!-- ==================================================
+       AUTHENTICATION
+       ================================================== -->
+
+  <section
+    class="auth-page"
+    id="authPage"
+  >
+
+    <!-- LOGIN ANIMATION AREA -->
+
+    <div class="auth-visual">
+
+      <div class="glow glow-one"></div>
+      <div class="glow glow-two"></div>
+
+      <div
+        class="animation-stage"
+        id="animationStage"
+        aria-hidden="true"
+      >
+
+        <!--
+          Original human animation will be added later.
+        -->
+
+        <div class="animation-placeholder">
+
+          <div class="placeholder-character">
+            <span>LH</span>
+          </div>
+
+          <p>
+            Login experience loading...
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="brand-visual">
+        <span>Laddu</span>
+        <strong>Hub</strong>
+      </div>
+
+      <p class="visual-text">
+        Your Smart Business Companion
+      </p>
+
+    </div>
+
+
+    <!-- AUTH CARD -->
+
+    <div class="auth-card">
+
+      <!-- LOGIN -->
+
+      <div
+        class="auth-form"
+        id="loginForm"
+      >
+
+        <div class="mobile-logo">
+          Laddu <span>Hub</span>
+        </div>
+
+        <p class="eyebrow">
+          WELCOME
+        </p>
+
+        <h1>
+          Welcome to Laddu Hub
+        </h1>
+
+        <p class="auth-subtitle">
+          Sign in to continue managing your business.
+        </p>
+
+
+        <form onsubmit="login(event)">
+
+          <div class="field">
+
+            <label for="username">
+              Username
+            </label>
+
+            <input
+              id="username"
+              type="text"
+              placeholder="Enter your username"
+              autocomplete="username"
+              required
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <div class="password-label">
+
+              <label for="password">
+                Password
+              </label>
+
+              <button
+                type="button"
+                class="forgot-btn"
+                onclick="forgotPassword()"
+              >
+                Forgot password?
+              </button>
+
+            </div>
+
+
+            <div class="password-wrap">
+
+              <input
+                id="password"
+                type="password"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                required
+              >
+
+              <button
+                type="button"
+                class="show-password"
+                onclick="togglePassword()"
+                aria-label="Show password"
+                title="Show password"
+              >
+                ◉
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <button
+            class="primary-btn"
+            type="submit"
+          >
+            <span>Log In</span>
+            <span class="arrow">→</span>
+          </button>
+
+        </form>
+
+
+        <p
+          class="error"
+          id="error"
+          role="alert"
+        >
+          Username or password is incorrect.
+        </p>
+
+
+        <div class="auth-divider">
+          <span>
+            New to Laddu Hub?
+          </span>
+        </div>
+
+
+        <button
+          class="secondary-btn"
+          type="button"
+          onclick="showSignup()"
+        >
+          Create an Account
+        </button>
+
+
+        <p class="demo-note">
+          Demo account:
+          <strong>Shohrab</strong>
+          /
+          <strong>1234</strong>
+        </p>
+
+      </div>
+
+
+      <!-- SIGN UP -->
+
+      <div
+        class="auth-form hidden"
+        id="signupForm"
+      >
+
+        <div class="mobile-logo">
+          Laddu <span>Hub</span>
+        </div>
+
+        <p class="eyebrow">
+          GET STARTED
+        </p>
+
+        <h1>
+          Create your account
+        </h1>
+
+        <p class="auth-subtitle">
+          Set up your business profile in a few simple steps.
+        </p>
+
+
+        <form onsubmit="createAccount(event)">
+
+          <div class="field">
+
+            <label for="fullName">
+              Full Name
+            </label>
+
+            <input
+              id="fullName"
+              type="text"
+              placeholder="Your full name"
+              autocomplete="name"
+              required
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="email">
+              Email
+            </label>
+
+            <input
+              id="email"
+              type="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+              required
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="shopName">
+              Business / Shop Name
+            </label>
+
+            <input
+              id="shopName"
+              type="text"
+              placeholder="Your business name"
+              required
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="businessType">
+              Business Type
+            </label>
+
+            <select
+              id="businessType"
+              required
+            >
+
+              <option value="">
+                Select business type
+              </option>
+
+              <option>Mobile Shop</option>
+              <option>Laptop Shop</option>
+              <option>Gadget Shop</option>
+              <option>Electronics</option>
+              <option>Computer Shop</option>
+              <option>Clothing</option>
+              <option>Food & Restaurant</option>
+              <option>Other</option>
+
+            </select>
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="location">
+              Shop Location
+            </label>
+
+            <input
+              id="location"
+              type="text"
+              placeholder="City / Area"
+              required
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="signupPassword">
+              Password
+            </label>
+
+            <input
+              id="signupPassword"
+              type="password"
+              placeholder="Minimum 6 characters"
+              autocomplete="new-password"
+              minlength="6"
+              required
+            >
+
+            <p class="password-hint">
+              Minimum 6 characters. A strong and unique password is recommended.
+            </p>
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="confirmPassword">
+              Confirm Password
+            </label>
+
+            <input
+              id="confirmPassword"
+              type="password"
+              placeholder="Enter your password again"
+              autocomplete="new-password"
+              minlength="6"
+              required
+            >
+
+          </div>
+
+
+          <div class="terms-box">
+
+            <input
+              id="agreeTerms"
+              type="checkbox"
+              required
+            >
+
+            <label for="agreeTerms">
+              আমি Laddu Hub-এর ব্যবহারের শর্তাবলি
+              এবং গোপনীয়তা নীতি পড়েছি ও সম্মত আছি।
+            </label>
+
+          </div>
+
+
+          <button
+            class="primary-btn"
+            type="submit"
+          >
+            <span>Create Account</span>
+            <span>→</span>
+          </button>
+
+        </form>
+
+
+        <p
+          class="signup-message"
+          id="signupMessage"
+          role="status"
+        ></p>
+
+
+        <div class="auth-divider">
+          <span>
+            Already have an account?
+          </span>
+        </div>
+
+
+        <button
+          class="secondary-btn"
+          type="button"
+          onclick="showLogin()"
+        >
+          Back to Login
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ==================================================
+       PREMIUM DASHBOARD
+       ================================================== -->
+
+  <section
+    class="dashboard-app"
+    id="dashboard"
+  >
+
+
+    <!-- ================================================
+         SIDEBAR
+         ================================================ -->
+
+    <aside
+      class="sidebar"
+      id="sidebar"
+    >
+
+      <div class="sidebar-brand">
+
+        <div class="brand-mark">
+          LH
+        </div>
+
+        <div class="brand-copy">
+
+          <div class="sidebar-logo">
+            Laddu <span>Hub</span>
+          </div>
+
+          <p>
+            Smart Business Management
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <nav class="sidebar-nav">
+
+        <button
+          class="nav-item active"
+          type="button"
+        >
+          <span class="nav-icon">▦</span>
+          <span>Dashboard</span>
+        </button>
+
+
+        <button
+          class="nav-item"
+          type="button"
+        >
+          <span class="nav-icon">◇</span>
+          <span>Products</span>
+        </button>
+
+
+        <button
+          class="nav-item"
+          type="button"
+        >
+          <span class="nav-icon">□</span>
+          <span>Stock</span>
+        </button>
+
+
+        <button
+          class="nav-item"
+          type="button"
+        >
+          <span class="nav-icon">↗</span>
+          <span>Sales</span>
+        </button>
+
+
+        <button
+          class="nav-item"
+          type="button"
+        >
+          <span class="nav-icon">♙</span>
+          <span>Customers</span>
+        </button>
+
+
+        <button
+          class="nav-item"
+          type="button"
+        >
+          <span class="nav-icon">৳</span>
+          <span>Due / Baki</span>
+        </button>
+
+
+        <button
+          class="nav-item"
+          type="button"
+        >
+          <span class="nav-icon">▤</span>
+          <span>Invoices</span>
+        </button>
+
+
+        <button
+          class="nav-item"
+          type="button"
+        >
+          <span class="nav-icon">⌁</span>
+          <span>Expenses</span>
+        </button>
+
+
+        <button
+          class="nav-item"
+          type="button"
+        >
+          <span class="nav-icon">⌁</span>
+          <span>Reports</span>
+        </button>
+
+
+        <button
+          class="nav-item"
+          type="button"
+        >
+          <span class="nav-icon">↻</span>
+          <span>Returns</span>
+        </button>
+
+
+        <button
+          class="nav-item"
+          type="button"
+        >
+          <span class="nav-icon">♢</span>
+          <span>Warranty</span>
+        </button>
+
+
+        <button
+          class="nav-item"
+          type="button"
+        >
+          <span class="nav-icon">⚙</span>
+          <span>Settings</span>
+        </button>
+
+      </nav>
+
+
+      <div class="sidebar-bottom">
+
+        <div class="sidebar-shop-card">
+
+          <div class="shop-avatar">
+            GP
+          </div>
+
+          <div>
+
+            <span>
+              Your Business
+            </span>
+
+            <strong id="sidebarBusinessName">
+              Gadget Point
+            </strong>
+
+            <small>
+              ● Active
+            </small>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </aside>
+
+
+
+    <!-- ================================================
+         DASHBOARD MAIN AREA
+         ================================================ -->
+
+    <div class="dashboard-main">
+
+
+      <!-- TOP HEADER -->
+
+      <header class="dashboard-header">
+
+        <div class="header-left">
+
+          <button
+            class="menu-btn"
+            id="menuButton"
+            type="button"
+            aria-label="Open menu"
+          >
+            ☰
+          </button>
+
+
+          <div class="global-search">
+
+            <span>
+              ⌕
+            </span>
+
+            <input
+              type="search"
+              placeholder="Search products, customers, invoices..."
+              aria-label="Global search"
+            >
+
+            <kbd>
+              Ctrl K
+            </kbd>
+
+          </div>
+
+        </div>
+
+
+        <div class="header-actions">
+
+          <button
+            class="header-icon-btn"
+            type="button"
+            title="Appearance"
+          >
+            ☾
+          </button>
+
+
+          <button
+            class="header-icon-btn notification-btn"
+            type="button"
+            title="Notifications"
+          >
+            ♧
+
+            <span class="notification-badge">
+              3
+            </span>
+          </button>
+
+
+          <div class="header-business">
+
+            <div class="business-icon">
+              🏪
+            </div>
+
+            <div>
+
+              <strong id="headerBusinessName">
+                Gadget Point
+              </strong>
+
+              <span>
+                Chattogram, BD
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </header>
+
+
+
+      <!-- DASHBOARD CONTENT -->
+
+      <main class="dashboard-content">
+        <div id="pageContent"></div>
+
+
+        <!-- WELCOME ROW -->
+
+        <section class="dashboard-intro">
+
+          <div>
+
+            <p class="dashboard-kicker">
+              BUSINESS OVERVIEW
+            </p>
+
+            <h1>
+              Welcome back, Shohrab! 👋
+            </h1>
+
+            <p>
+              Here's what's happening with your business today.
+            </p>
+
+          </div>
+
+
+          <button
+            class="date-filter"
+            type="button"
+          >
+            <span>▣</span>
+
+            <span>
+              This Month
+            </span>
+
+            <span>
+             ⌄
+            </span>
+          </button>
+
+        </section>
+
+
+
+        <!-- METRIC CARDS -->
+
+        <section class="metric-grid">
+
+
+          <article class="metric-card metric-purple">
+
+            <div class="metric-top">
+
+              <div class="metric-icon">
+                ▥
+              </div>
+
+              <span class="metric-label">
+                TOTAL SALES
+              </span>
+
+            </div>
+
+            <strong class="metric-value">
+              ৳0
+            </strong>
+
+            <p class="metric-positive">
+              ↑ Business sales overview
+            </p>
+
+            <div class="mini-chart purple-chart"></div>
+
+          </article>
+
+
+
+          <article class="metric-card metric-green">
+
+            <div class="metric-top">
+
+              <div class="metric-icon">
+                ৳
+              </div>
+
+              <span class="metric-label">
+                TOTAL PAID
+              </span>
+
+            </div>
+
+            <strong class="metric-value">
+              ৳0
+            </strong>
+
+            <p class="metric-positive">
+              ↑ Payments received
+            </p>
+
+            <div class="mini-chart green-chart"></div>
+
+          </article>
+
+
+
+          <article class="metric-card metric-pink">
+
+            <div class="metric-top">
+
+              <div class="metric-icon">
+                ◫
+              </div>
+
+              <span class="metric-label">
+                TOTAL DUE
+              </span>
+
+            </div>
+
+            <strong class="metric-value">
+              ৳0
+            </strong>
+
+            <p class="metric-negative">
+              Customer outstanding
+            </p>
+
+            <div class="mini-chart pink-chart"></div>
+
+          </article>
+
+
+
+          <article class="metric-card metric-blue">
+
+            <div class="metric-top">
+
+              <div class="metric-icon">
+                ◈
+              </div>
+
+              <span class="metric-label">
+                IN STOCK
+              </span>
+
+            </div>
+
+            <strong class="metric-value">
+              0 Items
+            </strong>
+
+            <p class="metric-positive">
+              Current inventory
+            </p>
+
+            <div class="mini-chart blue-chart"></div>
+
+          </article>
+
+
+
+          <article class="metric-card compact-card metric-orange">
+
+            <div class="metric-icon">
+              ⇄
+            </div>
+
+            <div>
+              <span class="metric-label">
+                TODAY'S SALES
+              </span>
+
+              <strong>
+                ৳0
+              </strong>
+            </div>
+
+          </article>
+
+
+
+          <article class="metric-card compact-card metric-violet">
+
+            <div class="metric-icon">
+              ↻
+            </div>
+
+            <div>
+              <span class="metric-label">
+                RETURNS
+              </span>
+
+              <strong>
+                0 Items
+              </strong>
+            </div>
+
+          </article>
+
+
+
+          <article class="metric-card compact-card metric-teal">
+
+            <div class="metric-icon">
+              $
+            </div>
+
+            <div>
+              <span class="metric-label">
+                TOTAL PROFIT
+              </span>
+
+              <strong>
+                ৳0
+              </strong>
+            </div>
+
+          </article>
+
+
+
+          <article class="metric-card compact-card metric-red">
+
+            <div class="metric-icon">
+              !
+            </div>
+
+            <div>
+              <span class="metric-label">
+                LOW STOCK
+              </span>
+
+              <strong>
+                0 Items
+              </strong>
+            </div>
+
+          </article>
+
+        </section>
+
+
+
+        <!-- CHART + ACTIVITY -->
+
+        <section class="dashboard-middle">
+
+
+          <!-- SALES OVERVIEW -->
+
+          <article class="panel sales-panel">
+
+            <div class="panel-heading">
+
+              <div>
+
+                <p class="panel-kicker">
+                  PERFORMANCE
+                </p>
+
+                <h2>
+                  Sales Overview
+                </h2>
+
+              </div>
+
+
+              <button
+                class="panel-filter"
+                type="button"
+              >
+                This Month ⌄
+              </button>
+
+            </div>
+
+
+            <div class="chart-legend">
+
+              <span>
+                <i class="legend-purple"></i>
+                This Month
+              </span>
+
+              <span>
+                <i class="legend-grey"></i>
+                Last Month
+              </span>
+
+            </div>
+
+
+            <div class="sales-chart">
+
+              <div class="chart-grid-line line-one"></div>
+              <div class="chart-grid-line line-two"></div>
+              <div class="chart-grid-line line-three"></div>
+              <div class="chart-grid-line line-four"></div>
+
+
+              <svg
+                class="chart-svg"
+                viewBox="0 0 700 250"
+                preserveAspectRatio="none"
+                aria-label="Sales chart"
+              >
+
+                <defs>
+
+                  <linearGradient
+                    id="salesFill"
+                    x1="0"
+                    x2="0"
+                    y1="0"
+                    y2="1"
+                  >
+
+                    <stop
+                      offset="0%"
+                      stop-color="#7657f6"
+                      stop-opacity="0.25"
+                    />
+
+                    <stop
+                      offset="100%"
+                      stop-color="#7657f6"
+                      stop-opacity="0"
+                    />
+
+                  </linearGradient>
+
+                </defs>
+
+
+                <path
+                  class="chart-area"
+                  d="
+                    M0 205
+                    C70 175, 90 155, 135 165
+                    S220 130, 275 145
+                    S355 105, 410 115
+                    S500 70, 555 95
+                    S635 55, 700 35
+                    L700 250
+                    L0 250
+                    Z
+                  "
+                />
+
+
+                <path
+                  class="chart-line-secondary"
+                  d="
+                    M0 220
+                    C70 210, 100 190, 145 200
+                    S230 175, 285 188
+                    S380 160, 430 170
+                    S520 135, 570 150
+                    S650 120, 700 105
+                  "
+                />
+
+
+                <path
+                  class="chart-line-primary"
+                  d="
+                    M0 205
+                    C70 175, 90 155, 135 165
+                    S220 130, 275 145
+                    S355 105, 410 115
+                    S500 70, 555 95
+                    S635 55, 700 35
+                  "
+                />
+
+              </svg>
+
+
+              <div class="chart-labels">
+
+                <span>1 May</span>
+                <span>8 May</span>
+                <span>15 May</span>
+                <span>22 May</span>
+                <span>31 May</span>
+
+              </div>
+
+            </div>
+
+
+            <div class="chart-summary">
+
+              <div>
+                <span>BEST DAY</span>
+                <strong>—</strong>
+              </div>
+
+              <div>
+                <span>AVERAGE / DAY</span>
+                <strong>৳0</strong>
+              </div>
+
+              <div>
+                <span>TOTAL ORDERS</span>
+                <strong>0 Orders</strong>
+              </div>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- RECENT ACTIVITIES -->
+
+          <article class="panel activity-panel">
+
+            <div class="panel-heading">
+
+              <div>
+
+                <p class="panel-kicker">
+                  LIVE UPDATE
+                </p>
+
+                <h2>
+                  Recent Activities
+                </h2>
+
+              </div>
+
+
+              <button
+                class="view-all-btn"
+                type="button"
+              >
+                View All
+              </button>
+
+            </div>
+
+
+            <div class="activity-list">
+
+
+              <div class="dashboard-activity">
+
+                <div class="activity-bubble green-bubble">
+                  ↗
+                </div>
+
+                <div class="activity-copy">
+
+                  <strong>
+                    No sales yet
+                  </strong>
+
+                  <span>
+                    New sales will appear here.
+                  </span>
+
+                </div>
+
+                <small>
+                  —
+                </small>
+
+              </div>
+
+
+
+              <div class="dashboard-activity">
+
+                <div class="activity-bubble blue-bubble">
+                  ◈
+                </div>
+
+                <div class="activity-copy">
+
+                  <strong>
+                    No stock activity
+                  </strong>
+
+                  <span>
+                    Stock updates will appear here.
+                  </span>
+
+                </div>
+
+                <small>
+                  —
+                </small>
+
+              </div>
+
+
+
+              <div class="dashboard-activity">
+
+                <div class="activity-bubble pink-bubble">
+                  ৳
+                </div>
+
+                <div class="activity-copy">
+
+                  <strong>
+                    No payments yet
+                  </strong>
+
+                  <span>
+                    Payment updates will appear here.
+                  </span>
+
+                </div>
+
+                <small>
+                  —
+                </small>
+
+              </div>
+
+
+
+              <div class="dashboard-activity">
+
+                <div class="activity-bubble orange-bubble">
+                  ↻
+                </div>
+
+                <div class="activity-copy">
+
+                  <strong>
+                    No returns yet
+                  </strong>
+
+                  <span>
+                    Product returns will appear here.
+                  </span>
+
+                </div>
+
+                <small>
+                  —
+                </small>
+
+              </div>
+
+
+            </div>
+
+          </article>
+
+        </section>
+
+
+
+        <!-- LOWER DASHBOARD -->
+
+        <section class="dashboard-lower">
+
+
+          <!-- TOP PRODUCTS -->
+
+          <article class="panel small-panel">
+
+            <div class="panel-heading">
+
+              <div>
+
+                <p class="panel-kicker">
+                  PRODUCTS
+                </p>
+
+                <h2>
+                  Top Selling Products
+                </h2>
+
+              </div>
+
+              <button
+                class="view-all-btn"
+                type="button"
+              >
+                View All
+              </button>
+
+            </div>
+
+
+            <div class="empty-panel">
+
+              <div class="empty-icon">
+                ◇
+              </div>
+
+              <strong>
+                No sales data yet
+              </strong>
+
+              <p>
+                Your best-selling products will appear here.
+              </p>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- STOCK STATUS -->
+
+          <article class="panel small-panel">
+
+            <div class="panel-heading">
+
+              <div>
+
+                <p class="panel-kicker">
+                  INVENTORY
+                </p>
+
+                <h2>
+                  Stock Status
+                </h2>
+
+              </div>
+
+            </div>
+
+
+            <div class="stock-overview">
+
+              <div class="donut stock-donut">
+
+                <div>
+                  <strong>0</strong>
+                  <span>Total Items</span>
+                </div>
+
+              </div>
+
+
+              <div class="donut-legend">
+
+                <span>
+                  <i class="dot-green"></i>
+                  In Stock
+                  <strong>0</strong>
+                </span>
+
+                <span>
+                  <i class="dot-blue"></i>
+                  Low Stock
+                  <strong>0</strong>
+                </span>
+
+                <span>
+                  <i class="dot-orange"></i>
+                  Out of Stock
+                  <strong>0</strong>
+                </span>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- DUE SUMMARY -->
+
+          <article class="panel small-panel">
+
+            <div class="panel-heading">
+
+              <div>
+
+                <p class="panel-kicker">
+                  OUTSTANDING
+                </p>
+
+                <h2>
+                  Due Summary
+                </h2>
+
+              </div>
+
+              <button
+                class="view-all-btn"
+                type="button"
+              >
+                View All
+              </button>
+
+            </div>
+
+
+            <div class="stock-overview">
+
+              <div class="donut due-donut">
+
+                <div>
+                  <strong>৳0</strong>
+                  <span>Total Due</span>
+                </div>
+
+              </div>
+
+
+              <div class="donut-legend">
+
+                <span>
+                  <i class="dot-green"></i>
+                  0 – 30 Days
+                  <strong>৳0</strong>
+                </span>
+
+                <span>
+                  <i class="dot-orange"></i>
+                  31 – 60 Days
+                  <strong>৳0</strong>
+                </span>
+
+                <span>
+                  <i class="dot-pink"></i>
+                  61+ Days
+                  <strong>৳0</strong>
+                </span>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        </section>
+
+
+
+        <!-- FOOTER -->
+
+        <footer class="dashboard-footer">
+
+          <span>
+            © Laddu Hub
+          </span>
+
+          <span>
+            Your Smart Business Companion
+          </span>
+
+        </footer>
+
+      </main>
+
+    </div>
+
+  </section>
+
+<script src="js/stock-data.js"></script>
+<script src="js/stock.js"></script>
+<script src="js/stock-save.js"></script>
+<script src="js/stock-table.js"></script>
+<script src="js/stock-details.js"></script>
+<script src="js/customer-view.js"></script>
+<script src="js/customer-showcase.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+
+</html>
